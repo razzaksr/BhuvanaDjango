@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
 
@@ -7,5 +6,7 @@ urlpatterns = [
     path('page',views.second),
     path('data',views.third),
     path('pics',views.fourth),
-    path('par/<int:data>',views.fifth)
+    path('par/<int:data>',views.fifth),
+    path('getlog',views.showlog),
+    path('sub',views.recform)
 ]

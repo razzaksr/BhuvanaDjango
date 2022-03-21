@@ -1,4 +1,3 @@
-from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse, request
 
@@ -11,7 +10,7 @@ def second(request):
     return render(request,'myfirst.html')
 
 def third(request):
-    return render(request,'mysecond.html',{"mydata":"hello there!"})
+    return render(request,'mysecond.html',{"mydata":"hello there!","myaddition":34.6})
 
 def fourth(request):
     return render(request,'audvid.html')
@@ -21,3 +20,17 @@ def fifth(request,data):
 
 def calculate(data):
     return data*data*data
+
+def showlog(request):
+    return render(request,'formsub.html')
+
+def recform(request):
+    # print(request.GET['user'])
+    # print(request.GET['pass'])
+    u=request.POST['user']
+    p=request.POST['pass']
+    
+    if u=="bhuvana" and p=="salem":
+        return render(request,'formsub.html',{"data":"authorised user"})
+    else:
+        return render(request,'formsub.html',{"data":"unauthorised user"})
