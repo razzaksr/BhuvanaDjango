@@ -5,5 +5,14 @@ from . import forms
 # Create your views here.
 
 def hai(request):
-    obj=forms.CorporatesForm()
+    if request.method=="POST":
+        obj=forms.CorporatesForm(request.POST)
+        if obj.is_valid():
+            obj.save()# insertion
+            obj=forms.CorporatesForm()
+            return render(request,'fill.html',{"submission":obj,"data":"Corporate inserted"})
+        else:
+            return render(request,'fill.html',{"submission":obj,"data":"Corporate hasn't inserted"})
+    else:
+        obj=forms.CorporatesForm()
     return render(request,'fill.html',{"submission":obj})
