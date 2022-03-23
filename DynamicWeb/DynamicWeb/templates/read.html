@@ -1,0 +1,18 @@
+{%extends 'home.html'%}
+    {% block content%}
+        <div class="card col-lg-3 col-md-8 col-sm-12 p-3 shadow bg-primary text-light">
+            <h1 class="card-title text-center display-4">{{one.org}}</h1>
+            <div class="card-body">
+                <p class="card-text text-center">{{one.place}}</p>
+                <p class="card-text text-center">{{one.nature}}</p>
+                <p class="card-text text-center">{{one.opennings}}</p>
+                <p class="card-text text-center">{{one.employees}}</p>
+                <a href="#" class="btn btn-outline-light">
+                    <p class="card-text float-start">{{one.basic}}</p>
+                </a>
+                <a href="#" class="btn btn-outline-light float-end">
+                    <p class="card-text">{{one.ratings}}</p>
+                </a>
+            </div>
+        </div>
+    {%endblock content%}

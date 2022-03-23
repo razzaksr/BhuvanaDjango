@@ -2,5 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.hai)
+    path('new',views.hai),
+    path('',views.showing),
+    path('<int:unique>',views.reading)
 ]
