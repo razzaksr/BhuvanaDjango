@@ -6,5 +6,7 @@ urlpatterns = [
     path('',views.showing),
     path('<int:unique>',views.reading),
     path('new/<int:key>',views.hai),
-    path('del/<int:pos>',views.remove)
+    path('del/<int:pos>',views.remove),
+    path('find',views.short),
+    path('found',views.handleShort)
 ]

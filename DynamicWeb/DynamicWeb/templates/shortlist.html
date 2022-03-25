@@ -1,0 +1,36 @@
+{%extends 'home.html'%}
+
+{%block content%}
+<h1 class="text-center text-primary display-3">Shortlist based on below</h1>
+<form class="col-lg-6 col-md-8 col-sm-12 p-5 shadow" action="/crudl/found" method="POST">
+    {%csrf_token%}
+    <div class="form-group">
+        <label>Based on Nature</label>
+        <input type="radio" name="nature" value="product" class="form-inline-check-input"/>Product
+        <input type="radio" name="nature" value="service" class="form-inline-check-input"/>Service
+    </div>
+    <p class="text-center display-6">OR</p>
+    <div class="form-group">
+        <label>Based on Opennings</label>
+        <input type="text" name="skills" placeholder="Skills to shortlist" class="form-control" />
+    </div>
+    <p class="text-center display-6">OR</p>
+    <div class="form-group">
+        <label>Based on Salary</label>
+        <input type="text" name="salary" placeholder="Salary" class="form-control" />
+    </div>
+    <p class="text-center display-6">OR</p>
+    <div class="form-group">
+        <label>Based on Ratings</label>
+        <input type="text" name="rate" placeholder="Rating to shortlist" class="form-control" />
+    </div>
+    <div class="row justify-content-around mt-4">
+        <button class="col-2 btn btn-outline-primary" type="submit">
+            Shortlist
+        </button>
+        <button class="col-2 btn btn-outline-dark" type="reset">
+            Reset
+        </button>
+    </div>
+</form>
+{%endblock content%}

@@ -31,7 +31,8 @@ def hai(request,key=0):#new/update
         return render(request,'fill.html',{"submission":obj})
 
 def showing(request):
-    house=models.Corporates.objects.all();
+    house=models.Corporates.objects.all();   
+    #house=models.Corporates.objects.all().order_by('basic'); 
     return render(request,'list.html',{"mylist":house})
 
 def reading(request,unique):
@@ -48,3 +49,36 @@ def remove(request,pos):
     each=models.Corporates.objects.get(id=pos)
     models.Corporates.delete(each)
     return redirect("/crudl/")
+
+def short(request):
+    return render(request,'shortlist.html')
+
+def handleShort(request):
+    try:
+        nat=request.POST['nature']
+    except KeyError as k:
+        nat=""
+    try:
+        open=request.POST['skills']
+    except KeyError as ky:
+        open=""
+    try:
+        rat=request.POST['rate']
+    except KeyError as ke:
+        rat=""
+    try:
+        sal=request.POST['salary']
+    except KeyError as ke:
+        sal=""
+    
+    print(nat,open,sal,rat)
+    
+    if nat!="" and open=="" and sal=="" and rat=="":
+        handle=models.Corporates.objects.filter(nature__exact=nat)
+    elif nat=="" and open!="" and sal=="" and rat=="":
+        handle=models.Corporates.objects.filter(opennings__icontains=open)
+    elif nat=="" and open=="" and sal!="" and rat=="":
+        handle=models.Corporates.objects.filter(basic__gte=sal)
+    elif nat=="" and open=="" and sal=="" and rat!="":
+        handle=models.Corporates.objects.filter(ratings__lte=rat)
+    return render(request,'list.html',{"mylist":handle})
