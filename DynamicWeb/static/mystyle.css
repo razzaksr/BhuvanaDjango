@@ -4,3 +4,13 @@
     border-style: double;
     border-color: burlywood;
 }
+
+table:hover
+{
+    background-color: blue;
+    color: white;
+}
+td:hover
+{
+    font-size: 20px;
+}

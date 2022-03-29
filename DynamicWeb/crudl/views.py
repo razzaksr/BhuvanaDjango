@@ -1,5 +1,8 @@
 from django.shortcuts import redirect, render
 from django.http import request
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import CorpSeri
 
 from . import models
 from . import forms
@@ -82,3 +85,21 @@ def handleShort(request):
     elif nat=="" and open=="" and sal=="" and rat!="":
         handle=models.Corporates.objects.filter(ratings__lte=rat)
     return render(request,'list.html',{"mylist":handle})
+
+@api_view(['GET'])
+def HaiThere(request):
+    custom_urls={
+        'get_all':'/',
+        'get_one':'/?one=one',
+        'newone':'/new',
+    }
+    return Response(custom_urls)
+
+@api_view(['POST'])
+def newCorp(request):
+    got=CorpSeri(data=request.data)
+    
+    if got.is_valid():
+        got.save()
+    return Response(got.data+" saved")
+

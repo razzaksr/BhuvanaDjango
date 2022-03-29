@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
 
 urlpatterns = [
@@ -8,5 +8,6 @@ urlpatterns = [
     path('new/<int:key>',views.hai),
     path('del/<int:pos>',views.remove),
     path('find',views.short),
-    path('found',views.handleShort)
+    path('found',views.handleShort),
+    path('api/newone',views.newCorp)
 ]
