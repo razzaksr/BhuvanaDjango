@@ -45,6 +45,9 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
+# Cross Origin Resource Sharing enable
+ALLOWED_HOSTS=['*']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

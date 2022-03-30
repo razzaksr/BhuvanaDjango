@@ -4,5 +4,6 @@ from rest_framework.serializers import ModelSerializer
 from .models import Corporates
 
 class CorpSeri(ModelSerializer):
-    model=Corporates
-    fields=('org','ratings','opennings','basic','nature','employees','place')
+    class Meta:
+        model=Corporates
+        fields=('org','ratings','opennings','basic','nature','employees','place')

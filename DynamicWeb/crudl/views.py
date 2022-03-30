@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import request
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 from .serializers import CorpSeri
 
 from . import models
@@ -86,20 +87,28 @@ def handleShort(request):
         handle=models.Corporates.objects.filter(ratings__lte=rat)
     return render(request,'list.html',{"mylist":handle})
 
-@api_view(['GET'])
-def HaiThere(request):
-    custom_urls={
-        'get_all':'/',
-        'get_one':'/?one=one',
-        'newone':'/new',
-    }
-    return Response(custom_urls)
-
 @api_view(['POST'])
 def newCorp(request):
     got=CorpSeri(data=request.data)
     
     if got.is_valid():
         got.save()
-    return Response(got.data+" saved")
+        return Response(got.data)
 
+@api_view(['GET'])
+def listAll(request):
+    every=models.Corporates.objects.all()
+    content=CorpSeri(every,many=True)
+    return Response(content.data,status=200)
+
+@api_view(['GET'])
+def individual(request,data):
+    single=models.Corporates.objects.get(id=data)
+    content=CorpSeri(single)
+    return Response(content.data,status=200)
+
+@api_view(['delete'])
+def removing(request,key):
+    single=models.Corporates.objects.get(id=key)
+    models.Corporates.delete(single)
+    return Response({"Deleted"})
