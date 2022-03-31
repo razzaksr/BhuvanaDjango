@@ -2,8 +2,10 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
+    path('',views.auth),
+    path('out',views.out),
     path('new',views.hai),
-    path('',views.showing),
+    path('home',views.showing),
     path('<int:unique>',views.reading),
     path('new/<int:key>',views.hai),
     path('del/<int:pos>',views.remove),

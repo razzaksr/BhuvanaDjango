@@ -26,13 +26,16 @@
           <div class="collapse navbar-collapse" id="corp">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item me-1 active">
-                <a class="btn btn-primary" href="/crudl/">Home</a>
+                <a class="btn btn-primary" href="/crudl/home">Home</a>
               </li>
               <li class="nav-item me-1">
                 <a class="btn btn-primary" href="/crudl/find">Short list</a>
               </li>
               <li class="nav-item me-1">
                 <a class="btn btn-primary" href="/crudl/new">New</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="btn btn-outline-danger" href="/crudl/out">Logout</a>
               </li>
             </ul>
           </div>
@@ -41,7 +44,7 @@
 
 
     <div class="container">
-        <h1 class="text-center text-primary">Corporates CRUDL Demo</h1>
+        <h1 class="text-center text-primary">Corporates CRUDL Demo by {{person}}</h1>
         <div class="row justify-content-center">
             {% block content %}
             {% endblock content%}
