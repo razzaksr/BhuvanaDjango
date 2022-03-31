@@ -12,3 +12,5 @@ class Corporates(models.Model):
     
     class Meta:
         db_table="corporates"
+    def __str__(self):
+        return self.org+" affect"

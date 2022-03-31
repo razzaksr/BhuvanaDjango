@@ -13,4 +13,6 @@ urlpatterns = [
     path('api/',views.listAll),
     path('api/<int:data>',views.individual),
     path('api/del/<int:key>',views.removing),
+    path('api/up/<int:id>',views.upCorp),
+    path('api/delob',views.removingByObject),
 ]

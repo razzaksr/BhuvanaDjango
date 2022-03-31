@@ -112,3 +112,23 @@ def removing(request,key):
     single=models.Corporates.objects.get(id=key)
     models.Corporates.delete(single)
     return Response({"Deleted"})
+
+@api_view(['delete'])
+def removingByObject(request):
+    single=models.Corporates.objects.get(id=request.data['id'])
+    #obj=CorpSeri(instance=request.data)
+    #ob=CorpSeri(instance=request.data,data=request.data)
+    models.Corporates.delete(single)
+    
+    
+    
+    #models.Corporates.delete()
+    return Response({"DeletedByObject"})
+
+@api_view(['POST'])
+def upCorp(request,id):
+    single=models.Corporates.objects.get(id=id)
+    got=CorpSeri(instance=single,data=request.data)
+    if got.is_valid():
+        got.save()
+        return Response(got.data)
