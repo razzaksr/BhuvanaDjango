@@ -38,10 +38,13 @@ def hai(request,key=0):#new/update
         #post section
         if request.method=="POST":
             if key!=0: #update changes ia POST
+                print("Updating")
                 each=models.Corporates.objects.get(id=key)
                 obj=forms.CorporatesForm(request.POST,instance=each)
+                
             else: #new addition to corporates
                 obj=forms.CorporatesForm(request.POST)
+                print(request.POST['org'],"",request.POST['place'])
             if obj.is_valid():
                 obj.save()# insertion/ update
                 #obj=forms.CorporatesForm()
