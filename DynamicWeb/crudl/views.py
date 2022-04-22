@@ -148,7 +148,7 @@ def listAll(request):
 
 @api_view(['GET'])
 def individual(request,data):
-    single=models.Corporates.objects.get(id=data)
+    single=models.Corporates.objects.get(org=data)
     content=CorpSeri(single)
     return Response(content.data,status=200)
 

@@ -40,13 +40,19 @@ INSTALLED_APPS = [
     'basic',
     'crudl',
     'crispy_forms',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 # Cross Origin Resource Sharing enable
 ALLOWED_HOSTS=['*']
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'DynamicWeb.urls'
