@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/newone',views.newCorp),
     path('api/',views.listAll),
     path('api/<data>',views.individual),
+    path('api/byid/<int:data>',views.individualsId),
     path('api/del/<int:key>',views.removing),
     path('api/up/<int:id>',views.upCorp),
     path('api/delob',views.removingByObject),

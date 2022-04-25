@@ -6,4 +6,4 @@ from .models import Corporates
 class CorpSeri(ModelSerializer):
     class Meta:
         model=Corporates
-        fields=('org','ratings','opennings','basic','nature','employees','place')
+        fields=('id','org','ratings','opennings','basic','nature','employees','place')

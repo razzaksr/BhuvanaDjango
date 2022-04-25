@@ -152,6 +152,12 @@ def individual(request,data):
     content=CorpSeri(single)
     return Response(content.data,status=200)
 
+@api_view(['GET'])
+def individualsId(request,data):
+    single=models.Corporates.objects.get(id=data)
+    content=CorpSeri(single)
+    return Response(content.data,status=200)
+
 @api_view(['delete'])
 def removing(request,key):
     single=models.Corporates.objects.get(id=key)
